@@ -61,31 +61,31 @@
   },
   {
     "role": "user",
-    "resource": "Mor",
+    "resource": "User",
     "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Mor",
+    "resource": "User",
     "action": "update:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Mor",
+    "resource": "User",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Mor",
+    "resource": "User",
     "action": "delete:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Mor",
+    "resource": "User",
     "action": "read:any",
     "attributes": "*"
   }
