@@ -9,22 +9,24 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { ArgsType, Field } from "@nestjs/graphql";
+import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { MorCreateInput } from "./MorCreateInput";
-import { ValidateNested } from "class-validator";
+import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
+import { IsOptional } from "class-validator";
 
-@ArgsType()
-class CreateMorArgs {
+@InputType()
+class AmitWhereInput {
   @ApiProperty({
-    required: true,
-    type: () => MorCreateInput,
+    required: false,
+    type: StringFilter,
   })
-  @ValidateNested()
-  @Type(() => MorCreateInput)
-  @Field(() => MorCreateInput, { nullable: false })
-  data!: MorCreateInput;
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  id?: StringFilter;
 }
 
-export { CreateMorArgs as CreateMorArgs };
+export { AmitWhereInput as AmitWhereInput };

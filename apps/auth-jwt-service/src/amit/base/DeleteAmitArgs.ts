@@ -11,30 +11,20 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ArgsType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { MorWhereUniqueInput } from "./MorWhereUniqueInput";
+import { AmitWhereUniqueInput } from "./AmitWhereUniqueInput";
 import { ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
-import { MorUpdateInput } from "./MorUpdateInput";
 
 @ArgsType()
-class UpdateMorArgs {
+class DeleteAmitArgs {
   @ApiProperty({
     required: true,
-    type: () => MorWhereUniqueInput,
+    type: () => AmitWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => MorWhereUniqueInput)
-  @Field(() => MorWhereUniqueInput, { nullable: false })
-  where!: MorWhereUniqueInput;
-
-  @ApiProperty({
-    required: true,
-    type: () => MorUpdateInput,
-  })
-  @ValidateNested()
-  @Type(() => MorUpdateInput)
-  @Field(() => MorUpdateInput, { nullable: false })
-  data!: MorUpdateInput;
+  @Type(() => AmitWhereUniqueInput)
+  @Field(() => AmitWhereUniqueInput, { nullable: false })
+  where!: AmitWhereUniqueInput;
 }
 
-export { UpdateMorArgs as UpdateMorArgs };
+export { DeleteAmitArgs as DeleteAmitArgs };
