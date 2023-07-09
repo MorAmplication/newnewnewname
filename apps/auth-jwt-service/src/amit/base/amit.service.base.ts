@@ -11,14 +11,9 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { PrismaService } from "../../prisma/prisma.service";
 import { Prisma, Amit } from "@prisma/client";
-import { PasswordService } from "../../auth/password.service";
-import { transformStringFieldUpdateInput } from "../../prisma.util";
 
 export class AmitServiceBase {
-  constructor(
-    protected readonly prisma: PrismaService,
-    protected readonly passwordService: PasswordService
-  ) {}
+  constructor(protected readonly prisma: PrismaService) {}
 
   async count<T extends Prisma.AmitCountArgs>(
     args: Prisma.SelectSubset<T, Prisma.AmitCountArgs>
@@ -39,32 +34,12 @@ export class AmitServiceBase {
   async create<T extends Prisma.AmitCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.AmitCreateArgs>
   ): Promise<Amit> {
-    return this.prisma.amit.create<T>({
-      ...args,
-
-      data: {
-        ...args.data,
-        password: await this.passwordService.hash(args.data.password),
-      },
-    });
+    return this.prisma.amit.create<T>(args);
   }
   async update<T extends Prisma.AmitUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.AmitUpdateArgs>
   ): Promise<Amit> {
-    return this.prisma.amit.update<T>({
-      ...args,
-
-      data: {
-        ...args.data,
-
-        password:
-          args.data.password &&
-          (await transformStringFieldUpdateInput(
-            args.data.password,
-            (password) => this.passwordService.hash(password)
-          )),
-      },
-    });
+    return this.prisma.amit.update<T>(args);
   }
   async delete<T extends Prisma.AmitDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.AmitDeleteArgs>
