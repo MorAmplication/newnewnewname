@@ -6,6 +6,7 @@ import { MorModule } from "./mor/mor.module";
 import { AmitModule } from "./amit/amit.module";
 import { MulyModule } from "./muly/muly.module";
 import { VikaModule } from "./vika/vika.module";
+import { UserTestModule } from "./userTest/userTest.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -27,6 +28,7 @@ import { AuthModule } from "./auth/auth.module";
     AmitModule,
     MulyModule,
     VikaModule,
+    UserTestModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

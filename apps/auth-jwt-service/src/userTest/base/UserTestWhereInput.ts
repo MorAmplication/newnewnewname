@@ -9,22 +9,24 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { ArgsType, Field } from "@nestjs/graphql";
+import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { VikaCreateInput } from "./VikaCreateInput";
-import { ValidateNested } from "class-validator";
+import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
+import { IsOptional } from "class-validator";
 
-@ArgsType()
-class CreateVikaArgs {
+@InputType()
+class UserTestWhereInput {
   @ApiProperty({
-    required: true,
-    type: () => VikaCreateInput,
+    required: false,
+    type: StringFilter,
   })
-  @ValidateNested()
-  @Type(() => VikaCreateInput)
-  @Field(() => VikaCreateInput, { nullable: false })
-  data!: VikaCreateInput;
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  id?: StringFilter;
 }
 
-export { CreateVikaArgs as CreateVikaArgs };
+export { UserTestWhereInput as UserTestWhereInput };
