@@ -15,3 +15,9 @@ model Vika {
   password  String
   roles     Json
 }
+
+model Mor {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
