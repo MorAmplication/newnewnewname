@@ -1,5 +1,5 @@
 export type Amit = {
-  id: string;
   createdAt: Date;
+  id: string;
   updatedAt: Date;
 };

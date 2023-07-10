@@ -1,5 +1,5 @@
 export type Muly = {
-  id: string;
   createdAt: Date;
+  id: string;
   updatedAt: Date;
 };

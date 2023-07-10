@@ -21,6 +21,10 @@ import { MulyList } from "./muly/MulyList";
 import { MulyCreate } from "./muly/MulyCreate";
 import { MulyEdit } from "./muly/MulyEdit";
 import { MulyShow } from "./muly/MulyShow";
+import { VikaList } from "./vika/VikaList";
+import { VikaCreate } from "./vika/VikaCreate";
+import { VikaEdit } from "./vika/VikaEdit";
+import { VikaShow } from "./vika/VikaShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -74,6 +78,13 @@ const App = (): React.ReactElement => {
           edit={MulyEdit}
           create={MulyCreate}
           show={MulyShow}
+        />
+        <Resource
+          name="Vika"
+          list={VikaList}
+          edit={VikaEdit}
+          create={VikaCreate}
+          show={VikaShow}
         />
       </Admin>
     </div>
