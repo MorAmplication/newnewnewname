@@ -4,7 +4,7 @@ import { Credentials } from "./Credentials";
 import { PasswordService } from "./password.service";
 import { TokenService } from "./token.service";
 import { VALID_ID } from "../tests/auth/constants";
-import { UserTestService } from "../usertest/usertest.service";
+import { VikaService } from "../vika/vika.service";
 
 const VALID_CREDENTIALS: Credentials = {
   username: "Valid User",
@@ -54,7 +54,7 @@ describe("AuthService", () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         {
-          provide: UserTestService,
+          provide: VikaService,
           useValue: authEntityService,
         },
         {

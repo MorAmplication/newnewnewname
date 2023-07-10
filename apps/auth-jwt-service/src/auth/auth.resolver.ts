@@ -5,21 +5,19 @@ import { AuthService } from "./auth.service";
 import { GqlDefaultAuthGuard } from "./gqlDefaultAuth.guard";
 import { UserData } from "./userData.decorator";
 import { LoginArgs } from "./LoginArgs";
-import { UserTestInfo } from "./UserTestInfo";
+import { VikaInfo } from "./VikaInfo";
 
-@Resolver(UserTestInfo)
+@Resolver(VikaInfo)
 export class AuthResolver {
   constructor(private readonly authService: AuthService) {}
-  @Mutation(() => UserTestInfo)
-  async login(@Args() args: LoginArgs): Promise<UserTestInfo> {
+  @Mutation(() => VikaInfo)
+  async login(@Args() args: LoginArgs): Promise<VikaInfo> {
     return this.authService.login(args.credentials);
   }
 
-  @Query(() => UserTestInfo)
+  @Query(() => VikaInfo)
   @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
-  async usertestInfo(
-    @UserData() entityInfo: UserTestInfo
-  ): Promise<UserTestInfo> {
+  async vikaInfo(@UserData() entityInfo: VikaInfo): Promise<VikaInfo> {
     return entityInfo;
   }
 }

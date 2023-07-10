@@ -18,6 +18,9 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { CreateVikaArgs } from "./CreateVikaArgs";
+import { UpdateVikaArgs } from "./UpdateVikaArgs";
 import { DeleteVikaArgs } from "./DeleteVikaArgs";
 import { VikaCountArgs } from "./VikaCountArgs";
 import { VikaFindManyArgs } from "./VikaFindManyArgs";
@@ -71,6 +74,43 @@ export class VikaResolverBase {
       return null;
     }
     return result;
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Vika)
+  @nestAccessControl.UseRoles({
+    resource: "Vika",
+    action: "create",
+    possession: "any",
+  })
+  async createVika(@graphql.Args() args: CreateVikaArgs): Promise<Vika> {
+    return await this.service.create({
+      ...args,
+      data: args.data,
+    });
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Vika)
+  @nestAccessControl.UseRoles({
+    resource: "Vika",
+    action: "update",
+    possession: "any",
+  })
+  async updateVika(@graphql.Args() args: UpdateVikaArgs): Promise<Vika | null> {
+    try {
+      return await this.service.update({
+        ...args,
+        data: args.data,
+      });
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new apollo.ApolloError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
   }
 
   @graphql.Mutation(() => Vika)
