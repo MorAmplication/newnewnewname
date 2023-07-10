@@ -22,9 +22,6 @@ model Mor {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  username  String   @unique
-  password  String
-  roles     Json
 }
 
 model Amit {
