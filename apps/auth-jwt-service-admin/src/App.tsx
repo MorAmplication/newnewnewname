@@ -17,6 +17,10 @@ import { AmitList } from "./amit/AmitList";
 import { AmitCreate } from "./amit/AmitCreate";
 import { AmitEdit } from "./amit/AmitEdit";
 import { AmitShow } from "./amit/AmitShow";
+import { MulyList } from "./muly/MulyList";
+import { MulyCreate } from "./muly/MulyCreate";
+import { MulyEdit } from "./muly/MulyEdit";
+import { MulyShow } from "./muly/MulyShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -63,6 +67,13 @@ const App = (): React.ReactElement => {
           edit={AmitEdit}
           create={AmitCreate}
           show={AmitShow}
+        />
+        <Resource
+          name="Muly"
+          list={MulyList}
+          edit={MulyEdit}
+          create={MulyCreate}
+          show={MulyShow}
         />
       </Admin>
     </div>
