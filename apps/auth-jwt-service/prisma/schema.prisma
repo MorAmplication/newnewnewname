@@ -8,30 +8,39 @@ generator client {
 }
 
 model User {
-  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
   firstName String?
+  id        String   @id @default(cuid())
   lastName  String?
-  username  String   @unique
   password  String
   roles     Json
+  updatedAt DateTime @updatedAt
+  username  String   @unique
 }
 
 model Mor {
-  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
 }
 
 model Amit {
-  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
 }
 
 model Muly {
-  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
+}
+
+model Vika {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+  username  String   @unique
+  password  String
+  roles     Json
 }
