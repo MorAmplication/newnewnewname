@@ -11,9 +11,14 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { PrismaService } from "../../prisma/prisma.service";
 import { Prisma, Vika } from "@prisma/client";
+import { PasswordService } from "../../auth/password.service";
+import { transformStringFieldUpdateInput } from "../../prisma.util";
 
 export class VikaServiceBase {
-  constructor(protected readonly prisma: PrismaService) {}
+  constructor(
+    protected readonly prisma: PrismaService,
+    protected readonly passwordService: PasswordService
+  ) {}
 
   async count<T extends Prisma.VikaCountArgs>(
     args: Prisma.SelectSubset<T, Prisma.VikaCountArgs>
@@ -34,12 +39,32 @@ export class VikaServiceBase {
   async create<T extends Prisma.VikaCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.VikaCreateArgs>
   ): Promise<Vika> {
-    return this.prisma.vika.create<T>(args);
+    return this.prisma.vika.create<T>({
+      ...args,
+
+      data: {
+        ...args.data,
+        password: await this.passwordService.hash(args.data.password),
+      },
+    });
   }
   async update<T extends Prisma.VikaUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.VikaUpdateArgs>
   ): Promise<Vika> {
-    return this.prisma.vika.update<T>(args);
+    return this.prisma.vika.update<T>({
+      ...args,
+
+      data: {
+        ...args.data,
+
+        password:
+          args.data.password &&
+          (await transformStringFieldUpdateInput(
+            args.data.password,
+            (password) => this.passwordService.hash(password)
+          )),
+      },
+    });
   }
   async delete<T extends Prisma.VikaDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.VikaDeleteArgs>

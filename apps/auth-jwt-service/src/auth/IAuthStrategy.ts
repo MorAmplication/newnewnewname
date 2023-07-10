@@ -1,5 +1,5 @@
-import { UserTestInfo } from "./UserTestInfo";
+import { VikaInfo } from "./VikaInfo";
 
 export interface IAuthStrategy {
-  validate: (...any: any) => Promise<UserTestInfo>;
+  validate: (...any: any) => Promise<VikaInfo>;
 }

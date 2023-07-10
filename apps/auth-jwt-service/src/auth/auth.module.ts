@@ -12,10 +12,10 @@ import { JwtStrategy } from "./jwt/jwt.strategy";
 import { jwtSecretFactory } from "./jwt/jwtSecretFactory";
 import { PasswordService } from "./password.service";
 import { TokenService } from "./token.service";
-import { UserTestModule } from "../usertest/usertest.module";
+import { VikaModule } from "../vika/vika.module";
 @Module({
   imports: [
-    forwardRef(() => UserTestModule),
+    forwardRef(() => VikaModule),
     PassportModule,
     SecretsManagerModule,
     JwtModule.registerAsync({
