@@ -9,6 +9,10 @@ import { VikaList } from "./vika/VikaList";
 import { VikaCreate } from "./vika/VikaCreate";
 import { VikaEdit } from "./vika/VikaEdit";
 import { VikaShow } from "./vika/VikaShow";
+import { MorList } from "./mor/MorList";
+import { MorCreate } from "./mor/MorCreate";
+import { MorEdit } from "./mor/MorEdit";
+import { MorShow } from "./mor/MorShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -41,6 +45,13 @@ const App = (): React.ReactElement => {
           edit={VikaEdit}
           create={VikaCreate}
           show={VikaShow}
+        />
+        <Resource
+          name="Mor"
+          list={MorList}
+          edit={MorEdit}
+          create={MorCreate}
+          show={MorShow}
         />
       </Admin>
     </div>
