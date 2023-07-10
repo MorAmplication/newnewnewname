@@ -1,9 +1,9 @@
 import { Credentials } from "../../auth/Credentials";
-import { VikaInfo } from "../../auth/VikaInfo";
+import { UserTestInfo } from "../../auth/UserTestInfo";
 
 export const VALID_ID = "1";
 
-export const TEST_USER: VikaInfo = {
+export const TEST_USER: UserTestInfo = {
   id: "cl7qmjh4h0000tothyjqapgj5",
   roles: ["User"],
   username: "ofek",

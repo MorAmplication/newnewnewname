@@ -25,6 +25,10 @@ import { VikaList } from "./vika/VikaList";
 import { VikaCreate } from "./vika/VikaCreate";
 import { VikaEdit } from "./vika/VikaEdit";
 import { VikaShow } from "./vika/VikaShow";
+import { UserTestList } from "./userTest/UserTestList";
+import { UserTestCreate } from "./userTest/UserTestCreate";
+import { UserTestEdit } from "./userTest/UserTestEdit";
+import { UserTestShow } from "./userTest/UserTestShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -85,6 +89,13 @@ const App = (): React.ReactElement => {
           edit={VikaEdit}
           create={VikaCreate}
           show={VikaShow}
+        />
+        <Resource
+          name="UserTest"
+          list={UserTestList}
+          edit={UserTestEdit}
+          create={UserTestCreate}
+          show={UserTestShow}
         />
       </Admin>
     </div>

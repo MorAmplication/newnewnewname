@@ -1,8 +1,8 @@
 import { Field, ObjectType } from "@nestjs/graphql";
-import { Vika } from "../vika/base/Vika";
+import { UserTest } from "../usertest/base/UserTest";
 
 @ObjectType()
-export class VikaInfo implements Partial<Vika> {
+export class UserTestInfo implements Partial<UserTest> {
   @Field(() => String)
   id!: string;
   @Field(() => String)

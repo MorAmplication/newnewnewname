@@ -1,11 +1,11 @@
 import { createParamDecorator, ExecutionContext } from "@nestjs/common";
 import { GqlContextType, GqlExecutionContext } from "@nestjs/graphql";
-import { Vika } from "@prisma/client";
+import { UserTest } from "@prisma/client";
 
 /**
  * Access the user data from the request object i.e `req.user`.
  */
-function userFactory(ctx: ExecutionContext): Vika {
+function userFactory(ctx: ExecutionContext): UserTest {
   const contextType = ctx.getType();
   if (contextType === "http") {
     // do something that is only important in the context of regular HTTP requests (REST)
@@ -25,6 +25,8 @@ function userFactory(ctx: ExecutionContext): Vika {
   throw new Error("Invalid context");
 }
 
-export const UserData = createParamDecorator<undefined, ExecutionContext, Vika>(
-  (data, ctx: ExecutionContext) => userFactory(ctx)
-);
+export const UserData = createParamDecorator<
+  undefined,
+  ExecutionContext,
+  UserTest
+>((data, ctx: ExecutionContext) => userFactory(ctx));

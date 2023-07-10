@@ -22,31 +22,23 @@ const CREATE_INPUT = {
   createdAt: new Date(),
   id: "exampleId",
   updatedAt: new Date(),
-  username: "exampleUsername",
-  password: "examplePassword",
 };
 const CREATE_RESULT = {
   createdAt: new Date(),
   id: "exampleId",
   updatedAt: new Date(),
-  username: "exampleUsername",
-  password: "examplePassword",
 };
 const FIND_MANY_RESULT = [
   {
     createdAt: new Date(),
     id: "exampleId",
     updatedAt: new Date(),
-    username: "exampleUsername",
-    password: "examplePassword",
   },
 ];
 const FIND_ONE_RESULT = {
   createdAt: new Date(),
   id: "exampleId",
   updatedAt: new Date(),
-  username: "exampleUsername",
-  password: "examplePassword",
 };
 
 const service = {
