@@ -11,79 +11,66 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsOptional, IsEnum } from "class-validator";
-import { SortOrder } from "../../util/SortOrder";
+import { IsString, IsOptional } from "class-validator";
+import { IsJSONValue } from "@app/custom-validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
 
-@InputType({
-  isAbstract: true,
-  description: undefined,
-})
-class VikaOrderByInput {
+@InputType()
+class UserUpdateInput {
   @ApiProperty({
     required: false,
-    enum: ["asc", "desc"],
+    type: String,
   })
+  @IsString()
   @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
+  @Field(() => String, {
     nullable: true,
   })
-  id?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
-  createdAt?: SortOrder;
+  firstName?: string | null;
 
   @ApiProperty({
     required: false,
-    enum: ["asc", "desc"],
+    type: String,
   })
+  @IsString()
   @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
+  @Field(() => String, {
     nullable: true,
   })
-  updatedAt?: SortOrder;
+  lastName?: string | null;
 
   @ApiProperty({
     required: false,
-    enum: ["asc", "desc"],
+    type: String,
   })
+  @IsString()
   @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
+  @Field(() => String, {
     nullable: true,
   })
-  username?: SortOrder;
+  username?: string;
 
   @ApiProperty({
     required: false,
-    enum: ["asc", "desc"],
+    type: String,
   })
+  @IsString()
   @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
+  @Field(() => String, {
     nullable: true,
   })
-  password?: SortOrder;
+  password?: string;
 
   @ApiProperty({
     required: false,
-    enum: ["asc", "desc"],
   })
+  @IsJSONValue()
   @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
+  @Field(() => GraphQLJSON, {
     nullable: true,
   })
-  roles?: SortOrder;
+  roles?: InputJsonValue;
 }
 
-export { VikaOrderByInput as VikaOrderByInput };
+export { UserUpdateInput as UserUpdateInput };

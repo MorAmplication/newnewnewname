@@ -9,39 +9,36 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { ObjectType, Field } from "@nestjs/graphql";
+import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsDate } from "class-validator";
-import { Type } from "class-transformer";
+import { IsString, IsOptional } from "class-validator";
 import { IsJSONValue } from "@app/custom-validators";
 import { GraphQLJSON } from "graphql-type-json";
-import { JsonValue } from "type-fest";
+import { InputJsonValue } from "../../types";
 
-@ObjectType()
-class Vika {
+@InputType()
+class UserCreateInput {
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
-  @Field(() => String)
-  id!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  firstName?: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
+    type: String,
   })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  createdAt!: Date;
-
-  @ApiProperty({
-    required: true,
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
   })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  updatedAt!: Date;
+  lastName?: string | null;
 
   @ApiProperty({
     required: true,
@@ -53,10 +50,18 @@ class Vika {
 
   @ApiProperty({
     required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  password!: string;
+
+  @ApiProperty({
+    required: true,
   })
   @IsJSONValue()
   @Field(() => GraphQLJSON)
-  roles!: JsonValue;
+  roles!: InputJsonValue;
 }
 
-export { Vika as Vika };
+export { UserCreateInput as UserCreateInput };

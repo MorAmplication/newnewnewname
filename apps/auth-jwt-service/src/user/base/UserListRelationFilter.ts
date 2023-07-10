@@ -11,46 +11,46 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsOptional, IsEnum } from "class-validator";
-import { SortOrder } from "../../util/SortOrder";
+import { UserWhereInput } from "./UserWhereInput";
+import { ValidateNested, IsOptional } from "class-validator";
+import { Type } from "class-transformer";
 
-@InputType({
-  isAbstract: true,
-  description: undefined,
-})
-class MorOrderByInput {
+@InputType()
+class UserListRelationFilter {
   @ApiProperty({
     required: false,
-    enum: ["asc", "desc"],
+    type: () => UserWhereInput,
   })
+  @ValidateNested()
+  @Type(() => UserWhereInput)
   @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
+  @Field(() => UserWhereInput, {
     nullable: true,
   })
-  id?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
-  createdAt?: SortOrder;
+  every?: UserWhereInput;
 
   @ApiProperty({
     required: false,
-    enum: ["asc", "desc"],
+    type: () => UserWhereInput,
   })
+  @ValidateNested()
+  @Type(() => UserWhereInput)
   @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
+  @Field(() => UserWhereInput, {
     nullable: true,
   })
-  updatedAt?: SortOrder;
+  some?: UserWhereInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereInput)
+  @IsOptional()
+  @Field(() => UserWhereInput, {
+    nullable: true,
+  })
+  none?: UserWhereInput;
 }
-
-export { MorOrderByInput as MorOrderByInput };
+export { UserListRelationFilter as UserListRelationFilter };
