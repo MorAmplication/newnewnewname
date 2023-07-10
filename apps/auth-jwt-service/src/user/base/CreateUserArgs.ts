@@ -9,36 +9,22 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { ObjectType, Field } from "@nestjs/graphql";
+import { ArgsType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsDate } from "class-validator";
+import { UserCreateInput } from "./UserCreateInput";
+import { ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
 
-@ObjectType()
-class Mor {
+@ArgsType()
+class CreateUserArgs {
   @ApiProperty({
     required: true,
-    type: String,
+    type: () => UserCreateInput,
   })
-  @IsString()
-  @Field(() => String)
-  id!: string;
-
-  @ApiProperty({
-    required: true,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  createdAt!: Date;
-
-  @ApiProperty({
-    required: true,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  updatedAt!: Date;
+  @ValidateNested()
+  @Type(() => UserCreateInput)
+  @Field(() => UserCreateInput, { nullable: false })
+  data!: UserCreateInput;
 }
 
-export { Mor as Mor };
+export { CreateUserArgs as CreateUserArgs };

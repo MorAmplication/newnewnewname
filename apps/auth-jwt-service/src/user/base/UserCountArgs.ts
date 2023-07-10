@@ -9,36 +9,20 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { ObjectType, Field } from "@nestjs/graphql";
+import { ArgsType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsDate } from "class-validator";
+import { UserWhereInput } from "./UserWhereInput";
 import { Type } from "class-transformer";
 
-@ObjectType()
-class Mor {
+@ArgsType()
+class UserCountArgs {
   @ApiProperty({
-    required: true,
-    type: String,
+    required: false,
+    type: () => UserWhereInput,
   })
-  @IsString()
-  @Field(() => String)
-  id!: string;
-
-  @ApiProperty({
-    required: true,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  createdAt!: Date;
-
-  @ApiProperty({
-    required: true,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  updatedAt!: Date;
+  @Field(() => UserWhereInput, { nullable: true })
+  @Type(() => UserWhereInput)
+  where?: UserWhereInput;
 }
 
-export { Mor as Mor };
+export { UserCountArgs as UserCountArgs };

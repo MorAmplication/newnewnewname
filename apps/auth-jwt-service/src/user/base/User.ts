@@ -11,14 +11,14 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsDate } from "class-validator";
+import { IsString, IsDate, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { IsJSONValue } from "@app/custom-validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
 
 @ObjectType()
-class Vika {
+class User {
   @ApiProperty({
     required: true,
     type: String,
@@ -44,6 +44,28 @@ class Vika {
   updatedAt!: Date;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  firstName!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  lastName!: string | null;
+
+  @ApiProperty({
     required: true,
     type: String,
   })
@@ -59,4 +81,4 @@ class Vika {
   roles!: JsonValue;
 }
 
-export { Vika as Vika };
+export { User as User };

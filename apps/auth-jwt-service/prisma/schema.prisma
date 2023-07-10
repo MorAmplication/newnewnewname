@@ -8,8 +8,8 @@ generator client {
 }
 
 model Vika {
-  createdAt DateTime @default(now())
   id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   username  String   @unique
   password  String
@@ -17,7 +17,18 @@ model Vika {
 }
 
 model Mor {
-  createdAt DateTime @default(now())
   id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model User {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  firstName String?
+  lastName  String?
+  username  String   @unique
+  password  String
+  roles     Json
 }

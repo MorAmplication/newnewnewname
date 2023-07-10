@@ -50,8 +50,8 @@ export class VikaControllerBase {
     return await this.service.create({
       data: data,
       select: {
-        createdAt: true,
         id: true,
+        createdAt: true,
         updatedAt: true,
         username: true,
         roles: true,
@@ -76,8 +76,8 @@ export class VikaControllerBase {
     return this.service.findMany({
       ...args,
       select: {
-        createdAt: true,
         id: true,
+        createdAt: true,
         updatedAt: true,
         username: true,
         roles: true,
@@ -103,8 +103,8 @@ export class VikaControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
-        createdAt: true,
         id: true,
+        createdAt: true,
         updatedAt: true,
         username: true,
         roles: true,
@@ -139,8 +139,8 @@ export class VikaControllerBase {
         where: params,
         data: data,
         select: {
-          createdAt: true,
           id: true,
+          createdAt: true,
           updatedAt: true,
           username: true,
           roles: true,
@@ -174,8 +174,8 @@ export class VikaControllerBase {
       return await this.service.delete({
         where: params,
         select: {
-          createdAt: true,
           id: true,
+          createdAt: true,
           updatedAt: true,
           username: true,
           roles: true,

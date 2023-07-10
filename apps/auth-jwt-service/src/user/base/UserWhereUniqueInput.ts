@@ -9,13 +9,12 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { ObjectType, Field } from "@nestjs/graphql";
+import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsDate } from "class-validator";
-import { Type } from "class-transformer";
+import { IsString } from "class-validator";
 
-@ObjectType()
-class Mor {
+@InputType()
+class UserWhereUniqueInput {
   @ApiProperty({
     required: true,
     type: String,
@@ -23,22 +22,6 @@ class Mor {
   @IsString()
   @Field(() => String)
   id!: string;
-
-  @ApiProperty({
-    required: true,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  createdAt!: Date;
-
-  @ApiProperty({
-    required: true,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  updatedAt!: Date;
 }
 
-export { Mor as Mor };
+export { UserWhereUniqueInput as UserWhereUniqueInput };
