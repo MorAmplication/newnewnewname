@@ -50,8 +50,8 @@ export class MorControllerBase {
     return await this.service.create({
       data: data,
       select: {
-        id: true,
         createdAt: true,
+        id: true,
         updatedAt: true,
       },
     });
@@ -74,8 +74,8 @@ export class MorControllerBase {
     return this.service.findMany({
       ...args,
       select: {
-        id: true,
         createdAt: true,
+        id: true,
         updatedAt: true,
       },
     });
@@ -99,8 +99,8 @@ export class MorControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
-        id: true,
         createdAt: true,
+        id: true,
         updatedAt: true,
       },
     });
@@ -133,8 +133,8 @@ export class MorControllerBase {
         where: params,
         data: data,
         select: {
-          id: true,
           createdAt: true,
+          id: true,
           updatedAt: true,
         },
       });
@@ -166,8 +166,8 @@ export class MorControllerBase {
       return await this.service.delete({
         where: params,
         select: {
-          id: true,
           createdAt: true,
+          id: true,
           updatedAt: true,
         },
       });
