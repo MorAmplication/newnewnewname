@@ -1,5 +1,5 @@
 export type Mor = {
-  id: string;
   createdAt: Date;
+  id: string;
   updatedAt: Date;
 };
